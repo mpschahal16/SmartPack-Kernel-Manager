@@ -213,6 +213,7 @@
     <string name="stune_boost_sett">Stune Boost Settings</string>
     <string name="powerhal">Power HAL</string>
     <string name="powerhal_tunables">Power HAL Tunables</string>
+    <string name="max_boost_freq">Max Boost Frequency</string>
 
     <!-- CPU Hotplug -->
     <string name="hotplug_warning">More than one hotplugging system is enabled!\nPlease only use one.</string>

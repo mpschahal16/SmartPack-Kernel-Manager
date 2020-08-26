@@ -56,6 +56,8 @@ public class CPUInputBoost {
     private static final String INPUT_BOOST_FREQ = "/input_boost_freq";
     private static final String REMOVE_INPUT_BOOST_LF = "/remove_input_boost_freq_lp";
     private static final String REMOVE_INPUT_BOOST_HF = "/remove_input_boost_freq_hp";
+    private static final String CPU_MAX_BOOST_LF = "/max_boost_freq_lp";
+    private static final String CPU_MAX_BOOST_HF = "/max_boost_freq_hp";
 
     private String PARANT;
     private String INPUT_BOOST_DURATION;
@@ -133,6 +135,30 @@ public class CPUInputBoost {
 
     public boolean hascpuinputboostlf() {
         return Utils.existFile(PARANT + CPU_INPUT_BOOST_LF);
+    }
+
+    public int getcpumaxboostlf() {
+        return Utils.strToInt(Utils.readFile(PARANT + CPU_MAX_BOOST_LF));
+    }
+
+    public void setcpumaxboostlf(int value, Context context) {
+        run(Control.write(String.valueOf(value), PARANT + CPU_MAX_BOOST_LF), PARANT + CPU_MAX_BOOST_LF, context);
+    }
+
+    public boolean hascpumaxboostlf() {
+        return Utils.existFile(PARANT + CPU_MAX_BOOST_LF);
+    }
+
+    public int getcpumaxboosthf() {
+        return Utils.strToInt(Utils.readFile(PARANT + CPU_MAX_BOOST_HF));
+    }
+
+    public void setcpumaxboosthf(int value, Context context) {
+        run(Control.write(String.valueOf(value), PARANT + CPU_MAX_BOOST_HF), PARANT + CPU_MAX_BOOST_HF, context);
+    }
+
+    public boolean hascpumaxboosthf() {
+        return Utils.existFile(PARANT + CPU_MAX_BOOST_HF);
     }
 
     public int getcpuinputboosthf() {

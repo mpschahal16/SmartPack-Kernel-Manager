@@ -281,6 +281,41 @@ public class CPUBoostFragment extends RecyclerViewFragment {
             items.add(cpuiboosthf);
         }
 
+        if (mCPUInputBoost.hascpumaxboostlf()) {
+            SelectView cpumboostlf = new SelectView();
+            cpumboostlf.setTitle(getString(R.string.max_boost_freq));
+            cpumboostlf.setSummary(getString(R.string.cluster_little));
+            cpumboostlf.setItems(mCPUFreq.getAdjustedFreq(mCPUFreq.getLITTLECpu(), getActivity()));
+            cpumboostlf.setItem((mCPUInputBoost.getcpumaxboostlf() / 1000)
+                    + getString(R.string.mhz));
+            cpumboostlf.setOnItemSelected((selectView, position, item)
+                    -> mCPUInputBoost.setcpumaxboostlf(mCPUFreq.getFreqs(mCPUFreq.getLITTLECpu()).get(position), getActivity()));
+            getHandler().postDelayed(() -> {
+                        cpumboostlf.setItem((mCPUInputBoost.getcpumaxboostlf() / 1000)
+                                + getString(R.string.mhz));
+                    },
+                    500);
+
+            items.add(cpumboostlf);
+        }
+
+        if (mCPUInputBoost.hascpumaxboosthf()) {
+            SelectView cpumboosthf = new SelectView();
+            cpumboosthf.setSummary(getString(R.string.cluster_big));
+            cpumboosthf.setItems(mCPUFreq.getAdjustedFreq(getActivity()));
+            cpumboosthf.setItem((mCPUInputBoost.getcpumaxboosthf() / 1000)
+                    + getString(R.string.mhz));
+            cpumboosthf.setOnItemSelected((selectView, position, item)
+                    -> mCPUInputBoost.setcpumaxboosthf(mCPUFreq.getFreqs().get(position), getActivity()));
+            getHandler().postDelayed(() -> {
+                        cpumboosthf.setItem((mCPUInputBoost.getcpumaxboosthf() / 1000)
+                                + getString(R.string.mhz));
+                    },
+                    500);
+
+            items.add(cpumboosthf);
+        }
+
         if (mCPUInputBoost.hasremoveinputboostlf()) {
             SelectView iboostfreq = new SelectView();
             iboostfreq.setTitle(getString(R.string.cluster_return_freq));
